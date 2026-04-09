@@ -21,7 +21,7 @@ function Component1() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("https://abudi-ai.onrender.com/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
