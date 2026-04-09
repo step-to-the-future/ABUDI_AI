@@ -245,9 +245,11 @@ func chatHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-    fmt.Println("Server running on " + port)
+	fmt.Printf("Received request body: %+v\n", reqBody)
 
 	messages := buildPrompt(reqBody)
+
+	fmt.Printf("Built messages: %+v\n", messages)
 
 	reply, err := callAI(messages)
 	if err != nil {
@@ -260,6 +262,12 @@ func chatHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("Backend is running"))
+	})
+
 	http.HandleFunc("/api/chat", chatHandler)
 
 	port := os.Getenv("PORT")
