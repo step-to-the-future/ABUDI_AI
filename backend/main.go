@@ -245,7 +245,7 @@ func chatHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
+    fmt.Println("Server running on " + port)
 
 	messages := buildPrompt(reqBody)
 
