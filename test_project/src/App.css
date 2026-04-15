@@ -298,7 +298,7 @@ input {
 /* Css setings of the calculator it self in the calculator.jsx */
 
 .calculator {
-  position: absolute;
+  position: fixed;
   width: 450px;
   height: 600px;
   border: 1px solid #ccc;
@@ -306,6 +306,7 @@ input {
   border-radius: 15px;
   padding: 7px;
   box-sizing: border-box;
+  z-index: 9999;
 }
 
 .calc_cont {
@@ -355,16 +356,18 @@ input {
 
 /*Css settings of the calculator button in the component1.jsx*/
 
-.main_cont{
-  position:absolute;
-  right: 100px;
+.main_cont {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 9998;
 }
 
 .close_but1{
   border: none;
   background: transparent;
   cursor: pointer;
-  margin-top: 25px;
+  margin-top: 5px;
   transition: 0.2s;
   border-radius: 10px;
   padding: 6px 6px;
@@ -440,10 +443,15 @@ input {
     font-size: 19px;
   }
 
-  .calculator {
+  .calculator { 
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 95vw;
-    height: 80vh;
+    height: 85vh;
     border-radius: 12px;
+    z-index: 9999;
   }
 
   .calc_cont {
@@ -475,14 +483,24 @@ input {
 
 @media (max-width: 480px) {
   .calculator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: 98vw;
     height: 75vh;
+
     padding: 5px;
     border-radius: 10px;
+    z-index: 9999;
+  }
+  .calc_body {
+    overflow: auto;
   }
 
   .calc_cont {
-    padding: 8px 10px;
+    padding: 6px 10px;
     margin-bottom: 6px;
   }
 
@@ -501,6 +519,7 @@ input {
 
   .main_cont {
     right: 10px;
+    bottom: 10px;
   }
 
   .close_pic1 {

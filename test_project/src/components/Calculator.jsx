@@ -4,10 +4,19 @@ import { IoMdClose } from "react-icons/io";
 
 export function Calculator({ onClose }) {
   const calcRef = useRef(null);
-
-  const [position, setPosition] = useState({ x: 75, y: 200 });
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+  const [position, setPosition] = useState({ x: 30, y: 200 });
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (!window.Desmos || !calcRef.current) return;
@@ -22,6 +31,8 @@ export function Calculator({ onClose }) {
   }, []);
 
   const handleMouseDown = (e) => {
+    if (window.innerWidth <= 900) return;
+
     setDragging(true);
     setOffset({
       x: e.clientX - position.x,
@@ -33,9 +44,18 @@ export function Calculator({ onClose }) {
     const handleMouseMove = (e) => {
       if (!dragging) return;
 
+      const calcWidth = 450;
+      const calcHeight = 600;
+
+      const maxX = window.innerWidth - calcWidth;
+      const maxY = window.innerHeight - calcHeight;
+
+      const newX = Math.max(0, Math.min(e.clientX - offset.x, maxX));
+      const newY = Math.max(0, Math.min(e.clientY - offset.y, maxY));
+
       setPosition({
-        x: e.clientX - offset.x,
-        y: e.clientY - offset.y,
+        x: e.clientX - newX,
+        y: e.clientY - newY,
       });
     };
 
@@ -56,7 +76,10 @@ export function Calculator({ onClose }) {
     <>
     <div
       className="calculator"
-      style={{
+      style={
+        isMobile
+        ? {}
+        : {
         left: `${position.x}px`,
         top: `${position.y}px`,
       }}
