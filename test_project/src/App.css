@@ -517,9 +517,11 @@ input {
     height: 20px;
   }
 
-  .main_cont {
+  .close_but1 {
+    position: fixed;
+    top: 5px;
     right: 10px;
-    bottom: 10px;
+    z-index: 9998;
   }
 
   .close_pic1 {
