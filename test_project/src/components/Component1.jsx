@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { Calculator }  from '../components/Calculator'
+import {LuCalculator } from "react-icons/lu"
 
 function Component1() {
   const questions = [
@@ -27,6 +29,8 @@ function Component1() {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showCalc, setShowCalc] = useState(false);
+
 
   const activeQuestion =
     activeQuestionIndex !== null ? questions[activeQuestionIndex] : null;
@@ -292,11 +296,26 @@ try {
       </aside>
 
       <main className={`quiz-main ${isSidebarOpen ? "shrink" : ""}`}>
+        
+        <div className="main_cont">
+
+      <button onClick={() => setShowCalc(prev => !prev)} className={`close_but1 ${showCalc? "active" : ""}`}>
+        <LuCalculator className="close_pic1"/>
+        <p className='but_sign'>Calculator</p>
+    </button>
+
+    {showCalc && <Calculator onClose={() => setShowCalc(false)}/>}
+
+    </div>
+
+
         <div className="quiz-container">
           <h1 className="quiz-title">Quiz Test</h1>
           <p className="quiz-subtitle">
             Choose an answer and get AI help if you make a mistake
           </p>
+      
+
 
           {questions.map((q, questionIndex) => {
             const selectedOption = selectedAnswers[questionIndex];

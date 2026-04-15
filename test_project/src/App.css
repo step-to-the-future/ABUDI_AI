@@ -295,6 +295,116 @@ input {
   font-weight: bold;
 }
 
+/* Css setings of the calculator it self in the calculator.jsx */
+
+.calculator {
+  position: absolute;
+  width: 450px;
+  height: 600px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 15px;
+  padding: 7px;
+  box-sizing: border-box;
+}
+
+.calc_cont {
+  cursor: move;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  user-select: none;
+  margin-bottom: 10px;
+}
+
+.calc_body {
+  width: 100%;
+  height: calc(100% - 52px);
+}
+
+.close_but{
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 10px;
+  position: absolute;
+  right: 20px
+}
+
+.close_but:hover{
+  background-color: rgb(226, 226, 226);
+}
+
+.close_but .close_pic:hover{
+  color: black;
+} 
+
+.close_pic{
+  width: 25px;
+  height: 25px;
+  color: grey;
+}
+
+.sigp{
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/*Css settings of the calculator button in the component1.jsx*/
+
+.main_cont{
+  position:absolute;
+  right: 100px;
+}
+
+.close_but1{
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: 0.2s;
+  border-radius: 10px;
+  padding: 6px 6px;
+}
+
+.close_but1:hover{
+  background-color: rgb(226, 226, 226);
+}
+
+.close_but1:hover .close_pic1,
+.close_but1:hover .but_sign {
+  color: black;
+}
+
+.close_but1.active {
+  background-color: rgb(226, 226, 226);
+}
+
+.close_but1.active .close_pic1,
+.close_but1.active .but_sign {
+  color: black;
+}
+
+
+.close_pic1{
+  width: 30px;
+  height: 30px;
+  color: grey;
+}
+
+.but_sign{
+   margin-top: 10px;
+   color: grey;
+}
+
+
+
+
+
+
 @media (max-width: 900px) {
   .quiz-layout {
     flex-direction: column;
@@ -328,5 +438,78 @@ input {
 
   .quiz-question {
     font-size: 19px;
+  }
+
+  .calculator {
+    width: 95vw;
+    height: 80vh;
+    border-radius: 12px;
+  }
+
+  .calc_cont {
+    padding: 8px 12px;
+  }
+
+  .sigp {
+    font-size: 18px;
+  }
+
+  .close_pic {
+    width: 22px;
+    height: 22px;
+  }
+
+  .main_cont {
+    right: 15px;
+  }
+
+  .close_pic1 {
+    width: 26px;
+    height: 26px;
+  }
+
+  .but_sign {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator {
+    width: 98vw;
+    height: 75vh;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .calc_cont {
+    padding: 8px 10px;
+    margin-bottom: 6px;
+  }
+
+  .sigp {
+    font-size: 16px;
+  }
+
+  .close_but {
+    right: 12px;
+  }
+
+  .close_pic {
+    width: 20px;
+    height: 20px;
+  }
+
+  .main_cont {
+    right: 10px;
+  }
+
+  .close_pic1 {
+    width: 24px;
+    height: 24px;
+  }
+
+  .but_sign {
+    font-size: 13px;
+    margin-top: 6px;
   }
 }
